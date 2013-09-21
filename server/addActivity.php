@@ -3,7 +3,7 @@ header('Access-Control-Allow-Origin: *');
 // TODO: mysql_query is being retired, change DB access to use the new command.
 require 'config.php'; //makes connection to database
 
-if (isset($_POST['name']) && $_POST['categories']) {
+if (isset($_POST['name']) && isset($_POST['categories'])) {
         $name=$_POST['name'];
         $description=$_GET['description'];
 
