@@ -17,14 +17,18 @@ $users = array();
 while ($row = @mysql_fetch_assoc($result)){
   $tmpUser = array("id" => $row['id'],
   "name" => $row['name'],
-  "img" => $row['img'],
-  "activities" => getUserActivities($row['id']));
+  "img" => $row['img']);
+  //,
+  //"activities" => getUserActivities($row['id']));
 
   $users[] = $tmpUser;
 }
 
-if ($tmpUser != array()) {
-  echo json_encode(array("success"=>true, "result" => $users));
+if ($users != array()) {
+  if (sizeof($users) == 1) {
+    $users = $users[0];
+  }
+    echo json_encode(array("user"=> $users));
 }
 
 mysql_close($con);
